@@ -8,15 +8,27 @@ function [all_theta] = oneVsAll(X, y, num_labels, lambda)
 %   to the classifier for label i
 
 % Some useful variables
+fprintf('\nnumber of training examples X in oneVsAll: \n');
 m = size(X, 1);
 m
+fprintf('\nnumber of columns in each training example in oneVsAll: \n');
+
 n = size(X, 2);
 n
 
+fprintf('\nNumero de clases diferentes:\n' );
+num_labels
+
 % You need to return the following variables correctly 
+fprintf('\nMatrix thetha con todos los classifier parameters,\n' );
+fprintf('de dimensiones K x (n + 1), \n' );
+fprintf('donde K es el # de clases diferentes: \n \n');
+
 all_theta = zeros(num_labels, n + 1);
 sizeAllTheta = size(all_theta);
 sizeAllTheta
+
+fprintf('\nTraining examples matrix X with an extra column of ones.\n' );
 
 % Add ones to the X data matrix
 X = [ones(m, 1) X];

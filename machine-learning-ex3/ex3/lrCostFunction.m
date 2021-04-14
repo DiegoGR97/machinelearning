@@ -7,6 +7,8 @@ function [J, grad] = lrCostFunction(theta, X, y, lambda)
 
 % Initialize some useful values
 m = length(y); % number of training examples
+% fprintf('\nnumber of training examples en lrCostFunction:. \n');
+% m
 
 % You need to return the following variables correctly 
 J = 0;

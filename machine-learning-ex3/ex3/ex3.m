@@ -62,8 +62,14 @@ pause;
 % Test case for lrCostFunction
 fprintf('\nTesting lrCostFunction() with regularization. \n');
 
+fprintf('\n4 valores de theta, desde Theta 0 hasta Theta 3. \n');
+
 theta_t = [-2; -1; 1; 2];
 theta_t
+fprintf('\n4 valores de X, desde X 0 para Theta 0 hasta X 3 para Theta 3. \n');
+fprintf('\nSon 5 training examples. Vamos a predecir un vector "y" de 5x1. \n');
+
+
 X_t = [ones(5,1) reshape(1:15,5,3)/10];
 X_t
 y_t = ([1;0;1;0;1] >= 0.5);
@@ -85,6 +91,14 @@ fprintf('\nTraining One-vs-All Logistic Regression...\n')
 
 lambda = 0.1;
 [all_theta] = oneVsAll(X, y, num_labels, lambda);
+
+fprintf('\nMatrix thetha con todos los classifier parameters:\n')
+%all_theta
+fprintf('\nDimensiones matrix thetha con todos los classifier parameters:\n')
+sizeAllThetaResult = size(all_theta);
+sizeAllThetaResult
+fprintf('\nA la anterior matriz se le llama "Multi-class Classifier".\n')
+
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
