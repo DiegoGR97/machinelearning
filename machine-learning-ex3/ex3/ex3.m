@@ -100,13 +100,22 @@ sizeAllThetaResult
 fprintf('\nA la anterior matriz se le llama "Multi-class Classifier".\n')
 
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('\n Program paused. Press enter to continue.\n');
 pause;
 
 
 %% ================ Part 3: Predict for One-Vs-All ================
+fprintf('\n ==== Part 3: Predict for One-Vs-All ==== \n');
+fprintf('\n Dimensiones de training data matrix X: (Se le va a agregar una columna de unos)\n');
+size(X)
+fprintf('\n Dimensiones de Multi-class Classifier transpuesta:\n');
 
+size(all_theta')
 pred = predictOneVsAll(all_theta, X);
+
+%Matriz de 5000 x 1 donde es 1 cuando se predijo bien, y 0 cuando no.
+accuracy = (pred == y);
+%accuracy
 
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
 

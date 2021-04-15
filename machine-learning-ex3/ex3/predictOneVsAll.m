@@ -9,7 +9,9 @@ function p = predictOneVsAll(all_theta, X)
 %  for 4 examples) 
 
 m = size(X, 1);
+% m = 5000
 num_labels = size(all_theta, 1);
+% num_labels = 10
 
 % You need to return the following variables correctly 
 p = zeros(size(X, 1), 1);
@@ -29,11 +31,31 @@ X = [ones(m, 1) X];
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
 %       
-
+X_all_theta = X*all_theta';
+%X_all_theta
+fprintf('\n Dimensiones de X * all_theta transpuesta:\n');
+sizeX_all_theta = size(X_all_theta);
+sizeX_all_theta
 
 
 predict = sigmoid(X*all_theta');
+fprintf('\n Dimensiones de sigmoid(X*all_theta_transpuesta):\n');
+%predict
+size(predict)
+
+fprintf('\n La matriz de prediccion sigmoid(X*all_theta_transpuesta) presenta, para cada training example, una fila de 10 \n ');
+fprintf('columnas que se predijeron, una por cada clase. La columna con valor mas alto, es la clase que se predijo.\n');
+
+
+%Obtenemos una matriz de 5000 x 2 donde, para cada training example,
+%obtenemos el valor maximo de las 10 columnas, y en cual de las 10 columnas se encuentra.
+%De esta manera, podemos saber que clase fue la que se predijo.
+fprintf('\n Matriz con valor maximo de las 10 columnas, y el indice de la columna con ese valor maximo: \n ');
+
 [predict_max, index_max] = max(predict, [], 2);
+%[predict_max, index_max]
+size([predict_max, index_max])
+%Exportamos una matriz de 5000 x 1 con todos los valores predichos.
 p = index_max;
 
 
