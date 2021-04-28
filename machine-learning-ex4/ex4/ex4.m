@@ -56,6 +56,13 @@ load('ex4weights.mat');
 
 % Unroll parameters 
 nn_params = [Theta1(:) ; Theta2(:)];
+fprintf('\n Dimensiones de nn_params:\n');
+size(nn_params)
+fprintf('\n Theta1 has size 25 x 401. It amounts to 10,025 values. \n');
+fprintf('\n Theta2 has size 10 x 26. It amounts to 260 values. \n');
+
+
+%nn_params
 
 %% ================ Part 3: Compute Cost (Feedforward) ================
 %  To the neural network, you should first start by implementing the

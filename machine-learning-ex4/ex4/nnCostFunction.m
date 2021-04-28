@@ -69,24 +69,46 @@ Theta2_grad = zeros(size(Theta2));
 
 
 I = eye(num_labels);
+fprintf('\n size(I)\n');
+size(I)
+I
+
 Y = zeros(m, num_labels);
+fprintf('\n size(Y)\n');
+size(Y)
+
 for i=1:m
   Y(i, :)= I(y(i), :);
 end
 
 
-
+%% Forward Propagation
 A1 = [ones(m, 1) X];
+fprintf('\n size(A1)\n');
+size(A1)
+
 Z2 = A1 * Theta1';
 A2 = [ones(size(Z2, 1), 1) sigmoid(Z2)];
+fprintf('\n size(A2)\n');
+size(A2)
+
 Z3 = A2*Theta2';
 H = A3 = sigmoid(Z3);
+fprintf('\n size(A3)\n');
+size(A3)
 
 
+%Regularization.
 penalty = (lambda/(2*m))*(sum(sum(Theta1(:, 2:end).^2, 2)) + sum(sum(Theta2(:,2:end).^2, 2)));
 
+%Normal cost function.
 J = (1/m)*sum(sum((-Y).*log(H) - (1-Y).*log(1-H), 2));
+%Cost function with regularization.
 J = J + penalty;
+
+
+%% Back Propagation
+
 
 Sigma3 = A3 - Y;
 Sigma2 = (Sigma3*Theta2 .* sigmoidGradient([ones(size(Z2, 1), 1) Z2]))(:, 2:end);
