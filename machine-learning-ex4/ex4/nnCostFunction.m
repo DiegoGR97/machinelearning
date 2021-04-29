@@ -69,13 +69,13 @@ Theta2_grad = zeros(size(Theta2));
 
 
 I = eye(num_labels);
-fprintf('\n size(I)\n');
-size(I)
-I
+% fprintf('\n size(I)\n');
+% size(I)
+% I
 
 Y = zeros(m, num_labels);
-fprintf('\n size(Y)\n');
-size(Y)
+% fprintf('\n size(Y)\n');
+% size(Y)
 
 for i=1:m
   Y(i, :)= I(y(i), :);
@@ -83,19 +83,35 @@ end
 
 
 %% Forward Propagation
+% A values are our activation values.
+% Para entender todo el código, descomentar todo lo siguiente.
+
 A1 = [ones(m, 1) X];
-fprintf('\n size(A1)\n');
-size(A1)
+
+% fprintf('\n (A1) = Training data plus bias term.\n');
+% fprintf('\n size(A1)\n');
+% size(A1)
 
 Z2 = A1 * Theta1';
-A2 = [ones(size(Z2, 1), 1) sigmoid(Z2)];
-fprintf('\n size(A2)\n');
-size(A2)
+% fprintf('\n size(Theta1 T):\n');
+% size(Theta1')
+% fprintf('\n (Z2) = (A1 * Theta1 Transpose)\n');
+% fprintf('\n size(Z2):\n');
+% size(Z2)
 
+A2 = [ones(size(Z2, 1), 1) sigmoid(Z2)];
+% fprintf('\n A2 = sigmoid(z2) + a(0)\n');
+% fprintf('\n size(A2):\n');
+% size(A2)
+
+% fprintf('\n size(Theta2 T):\n');
+% size(Theta2')
+% fprintf('\n Z3 = (A2 * Theta2 Transpose)\n');
 Z3 = A2*Theta2';
+% fprintf('\n size(Z3):\n');
+% size(Z3)
+% fprintf('\n H = A3 = sigmoid(Z3)\n');
 H = A3 = sigmoid(Z3);
-fprintf('\n size(A3)\n');
-size(A3)
 
 
 %Regularization.
@@ -109,15 +125,30 @@ J = J + penalty;
 
 %% Back Propagation
 
-
+% Sigmas are our error values.
 Sigma3 = A3 - Y;
 Sigma2 = (Sigma3*Theta2 .* sigmoidGradient([ones(size(Z2, 1), 1) Z2]))(:, 2:end);
 
+% We can compute our partial derivative terms by multiplying our activation values and our error values for each training example
+
+% size(Delta_1): 25   401
+% size(Delta_2): 10   26
 
 Delta_1 = Sigma2'*A1;
+% fprintf('\n Delta_1 = Sigma2 Transpose * A1\n');
+% fprintf('\n size(Delta_1):\n');
+% size(Delta_1)
+
 Delta_2 = Sigma3'*A2;
+% fprintf('\n Delta_2 = Sigma3 Transpose * A2\n');
+% fprintf('\n size(Delta_2):\n');
+% size(Delta_2)
 
+% The process produces a gradient term for every element in my original theta matrices
+% (Theta 1 for the first layer or input layer, and theta 2 for my hidden layer or layer 2.)
 
+% The capital-delta terms are the partial derivatives and the results we are looking for:
+% These are also considered the gradients.
 Theta1_grad = Delta_1./m + (lambda/m)*[zeros(size(Theta1,1), 1) Theta1(:, 2:end)];
 Theta2_grad = Delta_2./m + (lambda/m)*[zeros(size(Theta2,1), 1) Theta2(:, 2:end)];
 
