@@ -131,10 +131,15 @@ pause;
 %
 
 p = 8;
-
+fprintf('Training data:\n');
+X
 % Map X onto Polynomial Features and Normalize
 X_poly = polyFeatures(X, p);
+fprintf('Polynomial features:\n');
+X_poly
 [X_poly, mu, sigma] = featureNormalize(X_poly);  % Normalize
+fprintf('Polynomial features normalized:\n');
+X_poly
 X_poly = [ones(m, 1), X_poly];                   % Add Ones
 
 % Map X_poly_test and normalize (using mu and sigma)
@@ -164,7 +169,7 @@ pause;
 %  lambda to see how the fit and learning curve change.
 %
 
-lambda = 0;
+lambda = 2;
 [theta] = trainLinearReg(X_poly, y, lambda);
 
 % Plot training data and fit
