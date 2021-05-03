@@ -17,7 +17,8 @@ sim = 0;
 %
 
 
-
+magnitude = sum((x1-x2).^2);
+sim = e^(-magnitude/(2*sigma^2));
 
 
 
