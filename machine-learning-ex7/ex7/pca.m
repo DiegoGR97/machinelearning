@@ -21,7 +21,11 @@ S = zeros(n);
 %
 
 
-
+  % DIMENSIONS:
+  %    X = m x n
+  
+  Sigma = (1/m)*(X'*X); % n x n
+  [U, S, V] = svd(Sigma);
 
 
 

@@ -28,7 +28,22 @@ centroids = zeros(K, n);
 
 
 
-
+% DIMENSIONS:
+  %    X =  m x n
+  %    centroids = K x n
+  
+  %% %%%%%% WORKING: SOLUTION1 %%%%%%%%%
+  % for i = 1:K
+  %     idx_i = find(idx==i);       %indexes of all the input which belongs to cluster j
+  %     centroids(i,:)=(1/length(idx_i))*sum(X(idx_i,:)); %calculating mean manually
+  % end
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  %% %%%%%% WORKING: SOLUTION 2 %%%%%%%%
+  for i = 1:K
+      idx_i = find(idx==i);       %indexes of all the input which belongs to cluster j
+      centroids(i,:) = mean(X(idx_i,:)); % calculating mean using built-in function
+  end
 
 
 

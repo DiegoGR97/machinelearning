@@ -22,7 +22,16 @@ idx = zeros(size(X,1), 1);
 %
 
 
-
+  % DIMENSIONS:
+  %    centroids = K x no. of features = 3 x 2
+  
+  for i = 1:size(X,1)
+      temp = zeros(K,1);
+      for j = 1:K
+          temp(j)=sqrt(sum((X(i,:)-centroids(j,:)).^2));
+      end
+      [~,idx(i)] = min(temp);
+  end
 
 
 

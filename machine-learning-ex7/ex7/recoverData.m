@@ -23,6 +23,17 @@ X_rec = zeros(size(Z, 1), size(U, 1));
 
 
 
+  % DIMENSIONS: 
+  %    Z = m x K
+  %    U = n x n
+  %    U_reduce = n x k
+  %    K = scalar
+  %    X_rec = m x n
+  
+  U_reduce = U(:,1:K);   % n x k
+  X_rec = Z * U_reduce'; % m x n
+
+
 % =============================================================
 
 end
