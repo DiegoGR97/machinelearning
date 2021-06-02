@@ -59,9 +59,16 @@ error_val   = zeros(m, 1);
 for i = 1:m,
   X_train = X(1:i, :);
   y_train = y(1:i);
+  % Determino el theta para mi training data.
   theta = trainLinearReg(X_train, y_train, lambda);
+  % Ahora comparo el valor de los errores en mi training y cross validation data usando el theta que ya
+  % saque entrenando/disminuyendo mi cost function con mi training data.
   error_train(i)  = linearRegCostFunction(X_train, y_train, theta, 0);  
   error_val(i)    = linearRegCostFunction(Xval, yval, theta, 0);
+
+
+  %Con cada iteración, utilizo más training data para calcular mi theta y minimizar mi cost function.
+
 end
 
 % -------------------------------------------------------------
