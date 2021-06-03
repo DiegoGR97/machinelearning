@@ -11,7 +11,9 @@ bestF1 = 0;
 F1 = 0;
 
 stepsize = (max(pval) - min(pval)) / 1000;
+%stepsize
 for epsilon = min(pval):stepsize:max(pval)
+%epsilon
     
     % ====================== YOUR CODE HERE ======================
     % Instructions: Compute the F1 score of choosing epsilon as the

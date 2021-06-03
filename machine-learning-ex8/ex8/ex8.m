@@ -52,9 +52,11 @@ pause
 %  terms of that distribution.
 %
 fprintf('Visualizing Gaussian fit.\n\n');
-
+%X
 %  Estimate my and sigma2
 [mu sigma2] = estimateGaussian(X);
+mu
+sigma2
 
 %  Returns the density of the multivariate normal at each data point (row) 
 %  of X
@@ -74,6 +76,8 @@ pause;
 % 
 
 pval = multivariateGaussian(Xval, mu, sigma2);
+pval
+yval
 
 [epsilon F1] = selectThreshold(yval, pval);
 fprintf('Best epsilon found using cross-validation: %e\n', epsilon);
