@@ -40,6 +40,7 @@ centroids = zeros(K, n);
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
   %% %%%%%% WORKING: SOLUTION 2 %%%%%%%%
+  %idx
   for i = 1:K
       idx_i = find(idx==i);       %indexes of all the input which belongs to cluster j
       centroids(i,:) = mean(X(idx_i,:)); % calculating mean using built-in function
