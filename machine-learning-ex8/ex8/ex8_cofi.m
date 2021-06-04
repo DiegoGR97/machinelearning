@@ -23,14 +23,17 @@ fprintf('Loading movie ratings dataset.\n\n');
 
 %  Load data
 load ('ex8_movies.mat');
-
+%  Y
 %  Y is a 1682x943 matrix, containing ratings (1-5) of 1682 movies on 
 %  943 users
 %
+%  R
 %  R is a 1682x943 matrix, where R(i,j) = 1 if and only if user j gave a
 %  rating to movie i
 
 %  From the matrix, we can compute statistics like average rating.
+%  R(1, :)
+%  Y(1, R(1, :))
 fprintf('Average rating for movie 1 (Toy Story): %f / 5\n\n', ...
         mean(Y(1, R(1, :))));
 
