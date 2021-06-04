@@ -42,14 +42,46 @@ Theta_grad = zeros(size(Theta));
 
 
 
+  % fprintf('size(X)\n');
+  % size(X)
 
+  % fprintf('Theta\n');
+  % size(Theta)
+
+  % fprintf('size(R)\n');
+  % size(R)
 
 
   %% %%%%% WORKING: Without Regularization %%%%%%%%%%
-  Error = (X*Theta') - Y;
-  
+   Error = (X*Theta') - Y;
+
+  %  fprintf('Error.^2\n');
+  %  Error.^2
+
+  %  fprintf('size(Error.^2)\n');
+  %  size(Error.^2)
+
+  %  fprintf('size(R)\n');
+  %  size(R)
+
+  %  fprintf('Error.^2.*R\n');
+  %  Error.^2.*R
+
+  %  fprintf('sum(Error.^2.*R)\n');
+  %  sum(Error.^2.*R)
+
+  % fprintf('sum(Error.^2.*R)\n');
+  % sum(Error.^2.*R)
+
+  % fprintf('sum(sum(Error.^2.*R))\n');
+  % sum(sum(Error.^2.*R))
+
+%  sum(sum(Error.^2.*R)) is the sum of all the elements of Error.^2 for
+%  which the corresponding element in R equals 1.
   J = (1/2)*sum(sum(Error.^2.*R));
   
+%  Note that X grad should be a matrix of the same size as X and similarly,
+%  Theta grad is a matrix of the same size as Theta.
   X_grad = (Error.*R)*Theta;   % Nm x n
   Theta_grad = (Error.*R)'*X;  % Nu x n
   

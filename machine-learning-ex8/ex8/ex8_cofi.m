@@ -58,6 +58,14 @@ Theta = Theta(1:num_users, 1:num_features);
 Y = Y(1:num_movies, 1:num_users);
 R = R(1:num_movies, 1:num_users);
 
+% X
+% Theta
+
+%   In order to use an off-the-shelf minimizer such as fmincg, the cost function has
+%   been set up to unroll the parameters into a single vector params.
+%   fprintf('[X(:) ; Theta(:)]\n');
+%   [X(:) ; Theta(:)]
+
 %  Evaluate cost function
 J = cofiCostFunc([X(:) ; Theta(:)], Y, R, num_users, num_movies, ...
                num_features, 0);
@@ -174,8 +182,15 @@ load('ex8_movies.mat');
 %  rating to movie i
 
 %  Add our own ratings to the data matrix
+
 Y = [my_ratings Y];
 R = [(my_ratings ~= 0) R];
+
+%  Columna agregada al final de Y y R.
+
+% fprintf('size(Y) \n');
+% size(Y)
+% Y(:, 944)
 
 %  Normalize Ratings
 [Ynorm, Ymean] = normalizeRatings(Y, R);
@@ -216,8 +231,13 @@ pause;
 %
 
 p = X * Theta';
-my_predictions = p(:,1) + Ymean;
+%fprintf('size(p) \n');
+%size(p)
 
+%p(:,1)
+
+my_predictions = p(:,1) + Ymean;
+%my_predictions
 movieList = loadMovieList();
 
 [r, ix] = sort(my_predictions, 'descend');
