@@ -37,7 +37,12 @@ initial_centroids = [3 3; 6 2; 8 5];
 
 % Find the closest centroids for the examples using the
 % initial_centroids
+
+X
 idx = findClosestCentroids(X, initial_centroids);
+
+%idx es un vector de tamaño X x 1, donde, para cada X, tengo el centroid más cercano.
+
 
 fprintf('Closest centroids for the first 3 examples: \n')
 fprintf(' %d', idx(1:3));
@@ -54,6 +59,7 @@ fprintf('\nComputing centroids means.\n\n');
 
 %  Compute means based on the closest centroids found in the previous part.
 centroids = computeCentroids(X, idx, K);
+
 
 fprintf('Centroids computed after initial finding of closest centroids: \n')
 fprintf(' %f %f \n' , centroids');

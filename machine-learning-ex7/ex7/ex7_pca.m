@@ -50,6 +50,9 @@ fprintf('\nRunning PCA on example dataset.\n\n');
 
 %  Run PCA
 [U, S] = pca(X_norm);
+mu
+U
+
 
 %  Compute mu, the mean of the each feature
 
@@ -85,10 +88,12 @@ axis([-4 3 -4 3]); axis square
 %  Project the data onto K = 1 dimension
 K = 1;
 Z = projectData(X_norm, U, K);
+Z
 fprintf('Projection of the first example: %f\n', Z(1));
 fprintf('\n(this value should be about 1.481274)\n\n');
 
 X_rec  = recoverData(Z, U, K);
+X_rec
 fprintf('Approximation of the first example: %f %f\n', X_rec(1, 1), X_rec(1, 2));
 fprintf('\n(this value should be about  -1.047419 -1.047419)\n\n');
 
